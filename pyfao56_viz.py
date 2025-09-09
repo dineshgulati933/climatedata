@@ -20,7 +20,7 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
         A DataFrame containing the water balance data. The DataFrame is expected to have the following columns:
         - Ks: Soil water depletion coefficient
         - ETc: Crop evapotranspiration
-        - ETcadj: Adjusted crop evapotranspiration
+        - ETa: Actual crop evapotranspiration
         - Rain: Rainfall
         - Irrig: Irrigation
         - Runoff: Runoff
@@ -66,8 +66,8 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     axes[0].set_ylabel('Ks')
     ax01 = axes[0].twinx()
     ax01.plot(results.iloc[:, 1], results['ETc'], color='coral', label='ETc')
-    ax01.plot(results.iloc[:, 1], results['ETcadj'], color='olive', label='ETc adj')
-    ax01.set_ylabel('ETc & ETc adj (mm)')
+    ax01.plot(results.iloc[:, 1], results['ETa'], color='olive', label='ETa')
+    ax01.set_ylabel('ETc & ETa (mm)')
     ax01.set_xticks([])
 
     # ===============================================
