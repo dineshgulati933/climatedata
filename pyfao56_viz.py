@@ -135,7 +135,7 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     # Print water balance summary in plot title
     # ===============================================
     if print_wb:
-        plt.suptitle(f'''ETc = {round(results.ETc.sum(), 2)}, ETc adj = {round(results.ETcadj.sum(), 2)}
+        plt.suptitle(f'''ETc = {round(results.ETc.sum(), 2)}, ETa = {round(results.ETa.sum(), 2)}
 Rain = {round(results.Rain.sum(), 2)}, Irrig. = {round(results.Irrig.sum(), 2)}, Irrig. count = {(results['Irrig'] != 0).sum()}
 Runoff = {round(results.Runoff.sum(), 2)}, Percolation = {round(results.DP.sum(), 2)}''', fontfamily='monospace')
 
