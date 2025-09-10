@@ -62,12 +62,12 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     # ===============================================
     # First subplot (Ks, ETc, and adjusted ETc)
     # ===============================================
-    axes[0].plot(results.iloc[:, 1], results['Ks'], color='green', ls='--', label='Ks')
+    axes[0].plot(results.iloc[:, 1], results['Ks'], color='green', ls='--', label=r'$K_{s}$')
     axes[0].set_ylabel(r'$K_{s}$')
     ax01 = axes[0].twinx()
-    ax01.plot(results.iloc[:, 1], results['ETc'], color='coral', label='ETc')
-    ax01.plot(results.iloc[:, 1], results['ETa'], color='olive', label='ETa')
-    ax01.set_ylabel(r'$ET_{c}\ \&\ ET_{a}\ (\mathrm{mm})$')
+    ax01.plot(results.iloc[:, 1], results['ETc'], color='coral', label=r'$ET_{c}$')
+    ax01.plot(results.iloc[:, 1], results['ETa'], color='olive', label=r'$ET_{a}$')
+    ax01.set_ylabel(r'$ET_{c}$ & $ET_{a}$ (mm)')
     ax01.set_xticks([])
 
     # ===============================================
@@ -85,10 +85,10 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     axes[2].set_ylim(results['TAW'].iloc[-1] + 10, 0)
     axes[2].plot(results.iloc[:, 1], results['TAW'], color='blue', label='TAW')
     axes[2].plot(results.iloc[:, 1], results['RAW'], color='darkslategrey', lw=2, label='RAW')
-    axes[2].plot(results.iloc[:, 1], results['Dr'], color='red', alpha=0.7, label='Dr')
-    axes[2].bar(results.iloc[:, 1], results['DP'], color='goldenrod', label='Percolation')
+    axes[2].plot(results.iloc[:, 1], results['Dr'], color='red', alpha=0.7, label=r'$D_{r}$')
+    axes[2].bar(results.iloc[:, 1], results['DP'], color='goldenrod', label='DP')
     axes[2].set_xlabel('DOY')
-    axes[2].set_ylabel('TAW, RAW, Dr & DP (mm)')
+    axes[2].set_ylabel(r'TAW, RAW, $D_{r}$ & DP (mm)')
 
     # ===============================================
     # Set x-ticks at regular intervals (every 10 days, for example)
@@ -135,9 +135,9 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     # Print water balance summary in plot title
     # ===============================================
     if print_wb:
-        plt.suptitle(f'''ETc = {round(results.ETc.sum(), 2)}, ETa = {round(results.ETa.sum(), 2)}
+        plt.suptitle(rf'''$ET_{{c}} = {round(results.ETc.sum(), 2)},\ ET_{{a}} = {round(results.ETa.sum(), 2)}
 Rain = {round(results.Rain.sum(), 2)}, Irrig. = {round(results.Irrig.sum(), 2)}, Irrig. count = {(results['Irrig'] != 0).sum()}
-Runoff = {round(results.Runoff.sum(), 2)}, Percolation = {round(results.DP.sum(), 2)}''', fontfamily='monospace')
+Runoff = {round(results.Runoff.sum(), 2)}, DP = {round(results.DP.sum(), 2)}''', fontfamily='monospace')
 
     # ===============================================
     # Save the plot if required
@@ -463,10 +463,10 @@ def kc_plot(results, secondary_axis: bool = True, save_plot: bool = False, plot_
         ax1.set_xlabel('')
 
     # Plotting the line plots for Kcb, Kc, and Ke
-    sns.lineplot(data=results, x=results.iloc[:, 1], y='Kcb', label='Kcb', color='lawngreen', ax=ax)
-    sns.lineplot(data=results, x=results.iloc[:, 1], y='Kc', label='Kc', color='skyblue', ax=ax)
-    sns.lineplot(data=results, x=results.iloc[:, 1], y='Ke', label='Ke', ls='--', color='peru', ax=ax)
-    ax.set_ylabel('Ke, Kcb, & Kc')
+    sns.lineplot(data=results, x=results.iloc[:, 1], y='Kcb', label=r'$K_{cb}$', color='lawngreen', ax=ax)
+    sns.lineplot(data=results, x=results.iloc[:, 1], y='Kc', label=r'$K_{c}$', color='skyblue', ax=ax)
+    sns.lineplot(data=results, x=results.iloc[:, 1], y='Ke', label=r'$K_{e}$', ls='--', color='peru', ax=ax)
+    ax.set_ylabel(r'$K_{e}, K_{cb}, & K_{c}$')
 
     try:
         # Set x-ticks at regular intervals
