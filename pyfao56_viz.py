@@ -135,7 +135,7 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     # Print water balance summary in plot title
     # ===============================================
     if print_wb:
-        plt.suptitle(rf'''$ET_{{c}} = {round(results.ETc.sum(), 2)},\ ET_{{a}} = {round(results.ETa.sum(), 2)}
+        plt.suptitle(f'''$ET_{{c}}$ = {round(results.ETc.sum(), 2)}, $ET_{{a}}$ = {round(results.ETa.sum(), 2)}
 Rain = {round(results.Rain.sum(), 2)}, Irrig. = {round(results.Irrig.sum(), 2)}, Irrig. count = {(results['Irrig'] != 0).sum()}
 Runoff = {round(results.Runoff.sum(), 2)}, DP = {round(results.DP.sum(), 2)}''', fontfamily='monospace')
 
@@ -466,7 +466,7 @@ def kc_plot(results, secondary_axis: bool = True, save_plot: bool = False, plot_
     sns.lineplot(data=results, x=results.iloc[:, 1], y='Kcb', label=r'$K_{cb}$', color='lawngreen', ax=ax)
     sns.lineplot(data=results, x=results.iloc[:, 1], y='Kc', label=r'$K_{c}$', color='skyblue', ax=ax)
     sns.lineplot(data=results, x=results.iloc[:, 1], y='Ke', label=r'$K_{e}$', ls='--', color='peru', ax=ax)
-    ax.set_ylabel(r'$K_{e}, K_{cb}, & K_{c}$')
+    ax.set_ylabel(r'$K_{e}$, $K_{cb}$, & $K_{c}$')
 
     try:
         # Set x-ticks at regular intervals
