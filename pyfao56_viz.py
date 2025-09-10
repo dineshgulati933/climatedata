@@ -63,11 +63,11 @@ def wb_plot(results, save_plot: bool = False, plot_name: str = 'wb_plot.jpeg', p
     # First subplot (Ks, ETc, and adjusted ETc)
     # ===============================================
     axes[0].plot(results.iloc[:, 1], results['Ks'], color='green', ls='--', label='Ks')
-    axes[0].set_ylabel('Ks')
+    axes[0].set_ylabel(r'$K_{s}$')
     ax01 = axes[0].twinx()
     ax01.plot(results.iloc[:, 1], results['ETc'], color='coral', label='ETc')
     ax01.plot(results.iloc[:, 1], results['ETa'], color='olive', label='ETa')
-    ax01.set_ylabel('ETc & ETa (mm)')
+    ax01.set_ylabel(r'$ET_{c}$ & $ET_{a}$ (mm)')
     ax01.set_xticks([])
 
     # ===============================================
